@@ -1,0 +1,88 @@
+﻿
+接口是接口。里面定义的方法都是public abstract 且可以继承的，变量也是public final的
+抽象类是类，除了public 抽象方法外，还可以定义私有变量，方法，抽象类没有实例，其实就没有抽象方法
+除此之外就是接口与类的单继承与多实现了
+
+servlet，本身是个接口，有很多实现类，主要是通过请求-响应模式用于动态页面的生成，
+首先会配置web.xml,或者注解去拦截请求，我们自己用它的实现类去做控制器转发请求，
+生命周期
+
+
+filter拦截方式：需要在<Filter-mapping>中添加<Dispacher>forward</Dispachaer>
+（这个字段会把之前的request的值进行覆盖。并且会拦截需要转发的请求）
+error的用法是用来来接错误信息页面，
+我们可以在web.xml的页面中配置错误页面的信息，具体配置如下（在Mapping之外配置）：
+
+<error-page>
+
+ <error-code>500</error-code>
+//此处应该写的数错误状态码
+ 
+<location>/index.jsp</location>//此处应该写的是拦截的具体路径
+
+</error-page>、
+错误页面的信息配置完成之后，我们就可以像之前的request拦截一样，
+在<Filter-mapping>中进行配置<Dispacher>error</Dispachaer>
+
+listener，监听器用于监听web应用中某些对象、信息的创建、销毁、增加，修改，删除等动作的发生，
+然后作出相应的响应处理。当范围对象的状态发生变化的时候，服务器自动调用监听器对象中的方法。
+但都是接口需要自己去实现方法，配置方法如下，不需要绑定事件自己就会绑定
+<listener>
+    <listener-class>nc.xyzq.listener.WebServicePublishListener</listener-class>
+</listener> 
+ServletContext对象监听器
+HttpSession对象监听器
+ServletRequest对象监听器
+ 
+
+    按监听的事件划分
+
+对象自身的创建和销毁的监听器
+对象中属性的创建和消除的监听器
+session中的某个对象的状态变化的监听器
+
+HttpSessionListener
+ 1：监听session属性的增加、移除以及属性值改变的HttpSessionAttributeListener
+监听web上下文的初始化（服务器已准备好接收请求）与销毁的ServletContextListener
+3：监听web上下文属性的增加、删除、属性值变化的ServletContextAttributeListener
+    4：监听request的创建与销毁的ServletRequestListener
+    5：监听request的属性的增加、删除、属性值变化的ServletRequestAttributeListener
+
+
+
+Servlet过滤器的基本原理：在Servlet作为过滤器使用时,它可以对客户的请求进行处理，
+处理完成后,它会交给下一个过滤器处理,这样,客户的请求在过滤链里逐个处理,直到请求发送到目标为止。
+例如,某网站里有提交“修改的注册信息”的网页,当用户填写完修改信息并提交后,
+服务器在进行处理时需要做两项工作:判断客户端的会话是否有效;对提交的数据进行统一编码。
+这两项工作可以在由两个过滤器组成的过滤链里进行处理。当过滤器处理成功后，
+把提交的数据发送到最终目标；如果过滤器处理不成功，将把视图派发到指定的错误页面。
+多重过滤器工作：web服务器根据Filter在web.xml文件中的注册顺序， 
+决定先调用哪个Filter，当第一个Filter的doFilter方法被调用时，
+web服务器会创建一个代表Filter链的FilterChain对象传递给该方法。
+在doFilter 方法中，开发人员如果调用了FilterChain对象的doFilter方法，
+则web服务器会检查FilterChain对象中是否还有filter，如果有，则调用第2个filter， 
+如果没有，则调用目标资源。
+5、转发是在请求时 转发是在容器即服务器上完成的，客户端感知不到。
+ 重定向是在响应时 是完全的跳转，客户端会重新请求，并再有完整的请求过程，
+浏览器地址栏可见响应的信息变化
+6、Filter可认为是Servlet的一种“变种”，它主要用于对用户请求进行预处理，
+也可以对HttpServletResponse进行后处理，是个典型的处理链。
+它与Servlet的区别在于：它不能直接向用户生成响应。
+完整的流程是：Filter对用户请求进行预处理，接着将请求交给 Servlet进行处理并生成响应，
+最后Filter再对服务器响应进行后处理
+Filter必须实现javax.Servlet.Filter接口，并且必须定义以下三个方法:init(),destory(),doFilter().
+Servlet一般继承HttpServlet，当Url匹配这个Servlet时候运行处理请求；
+1,servlet 流程是短的，url传来之后，就对其进行处理，之后返回或转向到某一自己指定的页面。
+它主要用来在 业务处理之前进行控制.
+2,filter 流程是线性的， url传来之后，检查之后，可保持原来的流程继续向下执行，被下一个filter,
+ servlet接收等，而servlet 处理之后，不会继续向下传递。filter功能可用来保持流程继续按照原来的方式进行下去，
+或者主导流程，而servlet的功能主要用来主导流程。
+7、
+RequestDispatcher接口中定义了二种方法用于请求转发： forward（ServletRequest，ServletResponse）方法：
+ 将请求转发给服务器上另外一个Servlet，JSP页面，或者HTML文件 这个方法必须在响应被提交给客户端之前调用，
+否则抛出异常。 方法调用后在响应中的没有提交的内容被自动消除。 include（ServletRequest，ServletResponse）
+方法 ： 用于在响应中包含其他资源(Servlet，JSP页面或HTML文件)的内容。 即请求转发后，
+原先的Servlet还可以继续输出响应信息，转发到的Servlet对请求做出的响应将并入原先Servlet的响应对象中。
+ 3，forward方法和include方法的区别： forward方法调用后在响应中的没有提交的内容被自动消除。
+将请求转发给其他的Servlet后，由被调用的Servlet负责对请求做出响应，而原先Servlet的执行则终止。 
+include方法使原先的Servlet和转发到的Servlet都可以输出响应信息，即原先的Servlet还可以继续输出响应信息

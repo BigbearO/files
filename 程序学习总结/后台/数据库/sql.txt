@@ -1,0 +1,4 @@
+判断为null转换，类型要匹配
+mysql,ifnull(col,0)
+pgsql--COALESCE(col,0)
+oracle--nvl(col,0)

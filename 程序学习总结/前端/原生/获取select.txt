@@ -1,0 +1,10 @@
+1:拿到select对象： `var myselect=document.getElementById("select");
+2：拿到选中项的索引：var index=myselect.selectedIndex ; // selectedIndex代表的是你所选中项的index
+3:拿到选中项options的value： myselect.options[index].value;
+4:拿到选中项options的text： myselect.options[index].text;
+5:拿到选中项的其他值，比如这里的url： myselect.options[index].getAttribute('url');
+二：jQuery方法
+1:var options=$(“#select option:selected”); //获取选中的项
+2:alert(options.val()); //拿到选中项的值
+3:alert(options.text()); //拿到选中项的文本
+4:alert(options.attr('url')); //拿到选中项的url值

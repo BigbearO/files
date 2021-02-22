@@ -1,0 +1,10 @@
+java编程：IO、多线程、分布式、负载均衡、缓存、消息----分布式、高并发、高负载、高可用性Elasticsearch
+Jenkins，Docker。
+
+
+网络通信，http与tcp/ip
+
+
+数据库
+
+linux,shell脚本

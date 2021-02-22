@@ -1,0 +1,101 @@
+调试：去看看idea调试，debug跳的含义
+
+需要在<Filter-mapping>中添加<Dispacher>forward</Dispachaer>（这个字段会把之前的request
+的值进行覆盖。并且会拦截需要转发的请求）
+
+
+1springIOC:将一切资源都视为javabean，放在IOC容器里面，管理这些bean以及它们之间的关系
+只是 Spring IoC 管理对象和依赖关系，采用的不是人为的主动创建，而是由 Spring IoC 自己通过描述创建的，
+也就是说Spring 是依靠描述来完成对象的创建及其依赖关系的。
+A在需要用到某个类B时，A不会去实例化类B，而是而是通过IOC配置文件来把实例化的类传进来，然后再用的
+
+2Aop，面向切面编程，当出现满足某个条件，需要多个实体进行改变时，就要用到AOP，
+SpringAOP 常用于数据库事务的编程，很多时候在做完第一步数据库数据更新后，不知道下一步是否会成功，
+如果下一步失败 会使用数据库事务回滚功能去回液事务，使得第一步的数据库更新也作废。
+在 SpringAOP 实现的数据库事务管理中，是 以异常作为消息的
+
+3mybatis:My Batis 的优势在于灵活，它几乎可以代替 JDBC ，同时提供了接口编程。目前 MyBatis 
+的数据访问层 DAO (Data Access Objects ）是不需要实现类的，它只需要 个接口和 XML
+（或者注解〉。 MyBatis 提供自动映射、动态 SQL 、级联、缓存、注解、代码和 SQL 分离等
+特性，使用方便，同时也可以对 SQL 进行优化。
+
+4反射
+与无参数：ob] ect = (ReflectServiceimpl) 
+Class forName（" com lean ssm chapter2.reflect.ReflectSer ceimpl ”）．
+newinstance() ;
+有参object = 
+(ReflectServiceimpl2) 
+Class . forName (” com . lean.ssm . chapter2 . reflect .ReflectServiceimpl2 ” ). 
+getConstructor(String . class).newinstance（"阿诗丹顿"） ”）；
+注意1）有无newinstance的区别，一个返回类的对象·的引用，一个返回object型实例对象 ，
+无newinstance作用是要求JVM查找并加载指定的类，也就是说JVM会执行该类的静态代码段。
+2）
+3）
+5动态代理：1）JDK 动态代理中,要实现其代理逻辑类必须去实现 java.lang.reflect.InvocationHandler
+接口，它里面定义了 invoke 方法，并提供接口数组用于下挂代理对象，先要建立起代理对象和真实服务对象的关系，然后实现代理逻辑，
+
+6观察者·模式，每个被观测者会被多个观测者监测，可以有多个被观测者存在。解决：当发生一个改变时，多个
+操作需要执行，防止这些操作之间产生耦合度过高的问题。
+1）被监控者需要实现observable类，要有初始化方法，添加监听者方法（加一句his.addObserver(observer);），发生改变的方法
+（此方法中要有  this.setChanged （）；／／设置被观察对象发生变化
+this.not fyObservers(newProduct ）；／／通知观察者，并传递新产品
+两个方法），
+2）观察者需要实现 java.util.Observer 接口的 update 方法，
+public void update(Observable o , Object product) { }
+
+运行的时候，实例化观测者被观察者，调用被观测者的添加监听者方法，
+添加实例化的监听者，再调用发生改变的方法
+
+
+
+
+问题：怎么写IOC以及AOP
+反射时class.forname.xxx,这个时候是怎么调用xxx的，class.forname返回的对象的引用
+class。forname作用是什么，返回的是什么
+
+返回的是类，那么类是我们自己定义的类吗，能用来定义对象吗，
+通过类的实例
+
+问题：xml配置的类，值怎么改变
+
+问题，AOP传参，注解里不写类型，方法才写类型
+问题：为毛第一个切面不用@component
+AOP所以切面加@component
+
+
+
+mybatis传递多个参数，建议注解@param（aaa,——在mapper的名字），用了注解就不用声明传入的类型，
+2可以使用·javabean传递参数，不要加主键属性，重新建一个不含主键属性的bean，属性当参数直接用就行
+
+
+mybatis，通过spring-xml，视为bean来配置
+	1）配置datasource，用户名，密码，数据库连接驱动 等,此时是用连接池，
+	在mybatis配置文件里配置DataSource，就是type= "POOLED",代表jmybatis内部的连接池
+当然也有·其他值，UNPOLED表示不用·连接池，JNDI表示自己集中或在外部配置数据源
+	2）配置sqlsessionFactory     
+	3)sqlsessionTemplate，有了这个2）就会失效
+	4)MapperFactoryBean,单个mapper，dao层对象
+	5)MapperScannerConfigurer,通过扫描 配置roleMapper，属性有basePackage，
+	  SqlSessionFactoryBeanName，sqlSessionTemplateBeanName 
+	（将覆盖 SqlSessionFactoryBeanName 的配置），annotationClass 指定标注才扫描成为 Mapper
+	一般用@Repository
+	markerInterface,指定实现了什么接口就是Mapper，此时需要指定公共接口，此项不一定配置，
+
+	注：jdbcTemplate,是一个类，里面有许多方法，增删改查都有，亦可执行多条语句
+
+	6) 使用注解来定义事务：
+	在对应方法上加@transactional（），括号里包括value=定义事务管理器，isolation=（隔离级别），
+	rollbackFor=（回滚的异常类）,tansactctionManager（定义事务管理器），等
+	同时需要添加命名空间<tx:annotation-driven transaction-manager=“tansactctionManager”>
+	注意对于非public方法，与static方法，此注解无效，且容易产生自调用（自己调用自己的方法）导致被调用方法上的
+	注解失效的问题，
+	7）配置事务管理器
+
+
+springMVC，@Configuration，在一个类上面加此注解，则为配置类，
+	@EnableWebMvc 表示配置springmvc,的那个-servlet.xml,
+1）配置web.xml，包括1dispatcherservlet,它拦截的路径，以及对应的处理类，2dispatcherservlet初始化的时机
+3springIOC文件路径  4ContextLoadListener,用来初始化ioc容器
+2）dispatcher-servlet.xml，1开启注解驱动，<mvc:annotation-driven />
+	2定义扫描的包<context:component-scan base-packge=''>3定义视图解析器，4可以开启事务管理器
+	

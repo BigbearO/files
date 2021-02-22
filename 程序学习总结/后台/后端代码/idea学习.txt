@@ -1,0 +1,33 @@
+一、创建项目
+1普通项目 file ->new ->project ->maven ->next
+2war项目file ->new ->project->maven ->点击create from archetype —>
+选择maven-archetype-webapp->next
+之后创建java 与resource目录，在project structure里设置为源码与资源目录
+
+3jar项目 file ->new ->project ->maven ->点击create from archetype —>next
+jar改war，则 project structure 里点击+号，添加web，注意添加后到pom文件改成war（不过还是建议2）
+
+
+jar包相当于一个个的类集合成一个包，当你使用某些功能时就需要这些jar包的支持，需要导入jar包。
+war包是web工程中对web应用的一个打包，目的是节省资源，提供效率，
+把war包方法到服务器指定文件夹中，war包会自动生成一个web应用，十分方便。
+
+
+
+注：
+1建立Maven项目时，网上建议的分别是 
+
+1）cocoon-22-archetype-webapp
+这个项目结构里包含了applicationContext.xml、log4j.xml、web.xml  pom.xml，但是没有java源码包
+
+2）maven-archetype-quickstart
+除了pom.xml外，没有其他的xml了，但是有main、test两个包，包里放了一个App、AppTest类
+
+3）maven-archetype-webapp
+在这个项目里，有WEB-INF目录，并且有web.xml和一个index.jsp
+
+
+idea设置热部署
+1设置setting》compiler》build auto
+2Ctrl+Shift+A》输入Registry,点击进入勾选：
+

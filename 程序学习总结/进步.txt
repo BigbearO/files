@@ -1,0 +1,121 @@
+9.11，vue文字长度限制
+vue引入的方式，import，resolve => {require（[路径],resolve）}
+加载组件 '组件名'，‘url:路径’
+
+9.16设置el-form-item:text-aligin:left
+获取对象的属性数组的长度 Object.keys($b).length；
+1、向下取整的函数Math.floor();
+2、向上取整Math.ceil();
+3、四舍五入Math.round();
+4、四舍五入取n位小数，得到的是字符串 ().toFixed(n); // 取小数点后n位
+
+9.18
+ 1)el-inputtextarea去掉右下角 必须class，resize:none
+ 2)调整滚动条，var x=document.getElementById('zyxx').offsetTop;window.scroll(0,x);
+	第一个参数水平坐标x，第二个垂直坐标y
+3)设置el-table，单元格样式 直接给定样式 -:header-cell-style="mycellstyle" :cell-style="mycellstyle"
+		或者 cell-class-name/header-cell-class-name设置类名
+4)设置分页与table的数据联动     1所有都获取-   data.slice((PageNum-1)*10,PageNum*10)
+	2分页获取 ，详见写的组件
+
+9.22 el对话框-dialog设置 :close-on-click-modal="false"，则点击阴影不消失
+加入@keyup.enter=“方法”,可以添加按键事件
+@keyup.enter.native覆盖原有封装的keyup事件
+深度选择器 >>> ，有时候选择不起作用，就用这个，之前修改elementUI的不起作用就用这个可以
+
+9.23引入css,@import style加scoped,保证引入的成功
+请求后台fetch已经封装好
+import { mapGetters } from "vuex";后执行  ...mapGetters(['loading','remember','loginQuery'])
+当前页面就可以通过this.name直接访问数据了
+
+9.25 el-table,通过回调函数，为行列添加class，参数是个对象{ row, column, rowIndex, columnIndex }
+row-class-name，
+cell-class-name  if(columnIndex == 2)
+row.column.label === "列标题"
+   <el-table-column
+  prop="noticeText"
+                                    label="内容"
+                            >
+                                <template slot-scope="scope" v-show="false">
+ 
+                                                                <el-popover trigger="hover" placement="top">
+                                                                    <div slot="reference" class="name-wrapper">
+                                                                        <el-tag size="medium">{{ scope.row.noticeText }}</el-tag>
+                                                                    </div>
+                                                                </el-popover>
+                                    <div > {{ scope.row.noticText }}</div>
+                                </template>
+                            </el-table-column>
+隐藏列使用v-if
+
+9.27解决无法为字符串创建属性问题：fetch.js,里面定义了参数是对象，杨哥直接传id，（传输的参数是对象才能增加属性），是不行的
+
+9.30关闭谷歌debug模式，
+检查(f12)=》source/资源=》pause on exception点成灰色（那个圆形带播放符号），
+旗子箭头点成蓝色（active breakpoint），
+找到XHR/fetchBreakpoints,展开，去掉"Any XHR or fetch"勾选，
+如果没有出现点击+号，然后点击其他空白处，之后这个勾选就会出来
+
+10.9，盒子模型针对块级元素
+10.10
+ 解决margin合并
+	1）兄弟元素（上下边距合并），设置margin为两个的和
+	2）父子（上边距合并），父元素设置成BFC， 即 Block Formatting Contexts (块级格式化上下文)
+	比如1、float:left/right; 2、position:absolute; 3、overflow:hidden;4、display:inline-block;
+pgsql 字符串连接，
+	1 || 例子：‘aa’|| ‘bb’->aabb
+	2 concat(str1,str2,...) concat('aa','bb') ->aabb
+	3concat_ws(x,str1,str2,...)  例：concat_ws(',',‘aa’,'bb') ->aa,bb,x是所以连接的间隔符号
+
+querywrapper
+	
+:ew.SqlSelect：所需要查找的字段 、tableName：使用的是那张表、ew.customSqlSegment：条件ew.sqlSet：修改的字段
+mybatis参数（单个多个参数就不说了）
+	1对象做参数@Param("userDTO") UserDTO userDTO  #{userDTO.name}
+	2当字段多了，sql不需要那么：(UserDTO userDTO)-> {Map<String, Object> sqlMap = new HashMap<>(2);
+   			 sqlMap.put("name", userDTO.getName());
+			return mapper.query(sql)}
+   其中sql语句直接用 #{name}
+
+
+10.12 querywrapper多表查询，目前看到的是
+查询联合数据，但是限制条件没有其他表，（传递wrapper）
+或者
+限制条件有其他实体数据，但查询结果只有wrapper实体类
+--解释将所需要的实体类作为属性，查询出来的放到这个属性里面
+多个条件，就把实体类 属性字段 in （子查询-结果单一字段）
+
+10.16，问题：误删svn目录后，服务器完好，本机死活更新不下来，解决：点击右键-乌龟SVN,悬浮
+点击svn还原（英文SVN revert）选择删除的文件还原即可
+10.20
+el-form使用自定义校验的时候，自定义的，不必prop与变量对应，
+官方required,message,trigger就必须了
+
+10.26 ，
+dispatch对应action需要接收commit,context，不然会无法提交后台
+elmentUI有些class直接拿来用就好，
+el-upload是换行的，需要inline-block,才能让校验错误信息inline显示
+设置el-form-item=>text-align:left，保证不顶格
+关于class，当修改element-ui这些组件原生样式，为了防止影响到其他组件，
+建议加一个父类（不起作用就深度选择器）
+dispatch后，通过dispatch('getMedOrg').then((返回的参数) => {}来解决数据异步问题
+el-select的v-model=“status” status 必须是个字符串格式 否则会直接渲染成数字显示
+
+10.27
+请求后台，最好通过调用action去获取，哪怕不去更改状态，这样会自动解构赋值，
+返回想要的数据，而不是一个promise对象
+elform,直接设置width：100px，是不管用的，只能设置%才有用
+
+10.29，遇到无法yml文件读取的情况，点击maven,generate sources and  update folders
+
+11.2elementUI,清空表单，必须要prop属性 ，自定义规则必须el-form绑定对象
+
+12.16 代码生成，新增文件后，要重启，不然提示无法绑定，注意模式
+12.20 查询出来的结果集为空集则会导致null转换函数失效
+12.30，postgreSQL，函数字符 @>，（集合A @>集合B）可以判断A是否包含B，
+适用于数组或其他集合类数据
+1.4 在vue.config.js.的devServer下面添加open:true属性，页面更改后自动刷新
+
+2.1 获取项目绝对路径
+org.springframework.core.io.Resource resource = new ClassPathResource("");
+        String path = resource.getFile().getAbsolutePath(); 

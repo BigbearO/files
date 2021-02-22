@@ -1,0 +1,63 @@
+,在maven项目中的classes文件夹下面,自动将resource全部复制过来,而在mavenresource里面的
+配置文件是修改过的,这就导致了,junit和tomcat运行时候采用的applicationContext.xml文件不同,
+导致了这个错误.
+
+
+
+一、部署方式：
+1项目文件放到webapps下，但是这个目录下不能直接放网页
+
+2conf/server.xml的配置，在Host标签的内部，添加Context标签
+<Context docBase="" path="" reloadable="" debug=""  crosscontext=""  />标签，其中
+
+docBase可以是相对路径(相对webapps，方法一已经用到),也可以是本地文件的绝对路径。
+path是web项目的访问路径，即虚拟文件目录。（注：如果path的设置与webapps下的文件同名，会加载webapps下web项目，如下例子二）
+reloadable="true"时，当WEB-INF目录下web.xml和class文件有改动的时候会自动重新加载不需要从新启动服务器。
+debug是调试信息，等级从0~9，等级越高调试信息就越多。
+crosscontext="true"时，表示不同context共享一个session。
+privileged="true"时，才允许Tomcat的Web应用使用容器内的Servlet。
+
+
+3项目打包成war防止WebApps下面，注意Tomcat本身有个叫root的基本的包
+
+4修改conf/tomcat-users.xml文件，添加管理角色。在
+<tomcat-users></tomcat-users>里添加role和user。
+
+<role rolename="mananger-gui">
+<user username="" passowrd="" roles="上面那个">
+
+.配置完后，访问http://localhost:8080，点击Manager App按钮，
+输入用户名和密码，进入在Tomcat Web Application Manager页面下，
+可以在Deploy里添加war包，配置web部署。
+有两种方式：
+①Deploy directory or WAR file located on server：
+将war包（test.war）放到webapps下。
+在WAR or Directory URL：添加访问路径（\test）。
+点击Deploy按钮，启动服务，访问：http://localhost:8080/test/index.html。
+
+②WAR file to deploy：
+点击选择文件按钮，选择war包(test.war),点击Deploy按钮，启动服务，
+访问：http://localhost:8080/test/index.html。
+
+4.在tomcat服务器的conf\Catalina\localhost目录下创建一个xml文件(路径找不到就自己创建)，
+内容如下：
+
+　　
+<Context path="/TestPro" docBase="D:\javaProject\TestPro\WebContent" debug="0" privileged="true">
+
+　　　
+</Context>
+
+　　　
+其中path是指项目的发布路径，也就是访问路径，假如像上边那样填写，就要这样访问：
+http://localhost:8080/ TestPro /index.jsp；
+docBase是指项目的WebContent(eclipse)或WebRoot(myeclipse)目录，
+很好理解，你的项目最终发布，就是发布的这个目录，通过配置，直接让tomcat指向这个目录，
+这样就可以运行项目啦。
+
+　注意：xml的文件名一定要和发布路径一致！
+
+
+2Tomcat在入口Bootstrap.main()方法中，首先通过load()方法加载server.xml文件，
+将配置的所有组件加载到内存中，然后调用start()方法进行组件的初始化和加载
+实际上该方法通过反射的方式调用了Catalina的start()方法

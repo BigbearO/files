@@ -1,0 +1,26 @@
+
+1java.lang.IllegalStateException: Web app root system property already set to different value: 
+在项目的web.xml里面添加
+<context-param>  
+    <param-name>webAppRootKey</param-name>  
+    <param-value>myapp.root</param-value>  
+</context-param> 
+值随便取
+
+2 Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.2:test (default-test) on project 
+<plugin>  在pom文件加入
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-surefire-plugin</artifactId>  
+        <version>2.4.2</version>  
+        <configuration>  
+          <skipTests>true</skipTests>  
+        </configuration>  
+    </plugin>  
+3 Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer',
+前端请求后台的时候，后台方法上没有写路径，就会按照数字顺序来匹配，而前端请求是加了路径
+所以报这个错误
+还有String转Date,用对象接受参数，里面有个Date属性，在此属性上面加入相关注解解决（如果用一些时间选择的组件应该没这个问题）
+@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8") //返回时间类型
+@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") //接收时间类型
+
+4Missing required prop: "value" ，el-select必须有默认赋值，所以需要加上v-model

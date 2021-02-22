@@ -1,0 +1,24 @@
+1.js增强型for,i是下标，for( i in array ) { array[i]} ,concat 可以连接两个数组，x.concat(y)
+
+2.js自定义对象
+var hero = new Object();
+hero.name = "盖伦"; //定义一个属性name，并且赋值
+hero.kill = function(){
+  document.write(hero.name + " 正在杀敌" ); //定义一个函数kill
+}
+hero.kill(); //调用函数kill
+
+3.js的bom，就是1alert这些弹出框2计时器3代表显示部分的Window，screen，navigator(浏览器)，4路径的history，location
+
+4函数function xxx(...value),...value表示任意数量的参数，...作用是将参数转换为数组，
+叫做rest参数
+，而在不做参数使用，正好相反，将数组解析转换成一个个的变量
+5获取浏览器类型：var browser=navigator.appName
+var b_version=navigator.appVersion
+var version=parseFloat(b_version)
+
+使用Redis与缓存，本身启动项目类就要增加开启缓存，并进行配置@EnableCaching
+1使用form传输到后台，好像就不用加注解，就能直接转换为实体类对象，
+qs转换为字符串也能直接装配到对象里，做好配置就行
+
+

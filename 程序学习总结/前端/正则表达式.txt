@@ -1,0 +1,13 @@
+
+thymeleaf,热部署是要设置cache为false
+,ssm中cacheable为false，然后在build一下才能在浏览器刷新
+
+Java正则表达,更多正则表达式见互联网医院机构端前端项目
+String input; 
+input.matches("[0-9A-Za-z_]*")
+js用户名 /[a-zA-Z0-9_]+/
+密码 /(?=^.{5,}$)(?=.*\d)(?=.*\W+)(?=.*[A-Z])(?=.*[a-z])(?!.*\n).*$/
+var str = 'zhidao_20120616';
+ if( /[a-zA-Z0-9_]+/.test(str)){
+ alert('合法用户名');
+ }

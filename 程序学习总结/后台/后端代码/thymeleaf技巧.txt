@@ -1,0 +1,1 @@
+thymelear,热部署是要设置cache为false,ssm中cacheable为false，然后在build一下才能在浏览器刷新

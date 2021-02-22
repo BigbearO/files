@@ -1,0 +1,39 @@
+<script type="text/javascript">
+
+var state = { 
+
+action : "page",
+
+ title : "HTML 5 History API simple demo",
+
+url : "yourpage"
+
+};
+
+history.pushState(state, "HTML 5 History API simple demo", state.url);
+
+window.onpopstate = function (e) {
+在html5中,利用新的api实现前端页面mvc的跳转也是一种不错的方式（注意：服务端不跳转）,利用这种方式可以实现前端MVC开发
+switch (e.state.action) {
+
+ case "home" :
+
+    document.title = "HOME ……";
+
+    $.get("index.php").done(function (data) { $("#wrapper").html(data); });
+
+     break;
+
+   case "page" :
+
+     document.title = e.state.title;
+
+     $.get(e.state.url).done(function (data) { $("#wrapper").html(data); });
+
+   break;
+
+ }
+
+}
+
+</script>;
