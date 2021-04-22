@@ -1,7 +1,7 @@
 <map version="0.9.0_Beta_8" background_color="#ffffff">
 <!-- To view this file, download free mind mapping software Sharemind from http://www.cuifang.com/sharemind -->
 <node CREATED="1598065269603" ID="Freemind_Link_403860961" MODIFIED="1598065277529" TEXT="vue">
-<node CREATED="1598190014465" ID="Freemind_Link_1978426861" MODIFIED="1598191405332" POSITION="right">
+<node CREATED="1598190014465" FOLDED="true" ID="Freemind_Link_1978426861" MODIFIED="1598191405332" POSITION="right">
 <richcontent TYPE="NODE"><html>
   <head>
     <style type="text/css">
@@ -1088,6 +1088,7 @@
 </node>
 </node>
 <node CREATED="1599699235263" ID="Freemind_Link_670445904" MODIFIED="1599699237196" TEXT=" &#x7236;&#x4f20;&#x5b50;&#xff1a;&#x5728;&#x5b50;&#x7ec4;&#x4ef6;&#x7684;&#x57fa;&#x7840;&#x4e0a;&#xff0c;&#x4f7f;&#x7528;&#x5b50;&#x7ec4;&#x4ef6;&#x6807;&#x7b7e;&#x65f6;&#xff0c;&#x7ed1;&#x5b9a;&#x53d8;&#x91cf;&#xff1a;aaa=&quot;bbb&quot;,&#x5b50;&#x7ec4;&#x4ef6;&#x4f7f;&#x7528;props&#xff1a;{}&#x8fdb;&#x884c;&#x63a5;&#x6536;&#x53d8;&#x91cf; &#x5b50;&#x56de;&#x4f20;&#xff1a;&#x5b50;&#x7ec4;&#x4ef6;&#x4f7f;&#x7528;&#x4e00;&#x4e2a;&#x4e8b;&#x4ef6;&#xff0c;&#x6b64;&#x4e8b;&#x4ef6;&#x4e2d;&#xff0c;&#x6267;&#x884c;this.$emit(&apos;&#x4e8b;&#x4ef6;&#x540d;&apos;, &apos;&#x6570;&#x636e;&apos;) &#xff0c;&#x7236;&#x7ec4;&#x4ef6;&#x4f7f;&#x7528;&#x5b50;&#x7ec4;&#x4ef6;&#x6807;&#x7b7e;&#x65f6;&#xff1a; @&#x4e8b;&#x4ef6;&#x540d;=&#x201c;&#x7236;&#x7ec4;&#x4ef6;&#x7528;&#x6765;&#x63a5;&#x6536;&#x7684;&#x65b9;&#x6cd5;&#x201d;&#xff0c;&#x6b64;&#x65b9;&#x6cd5;&#x5fc5;&#x6709;&#x53c2;&#x6570;&#x6765;&#x63a5;&#x6536;&#x5b50;&#x7ec4;&#x4ef6;&#x4f20;&#x6765;&#x7684;&#x503c;data&#xff0c;&#x4e00;&#x822c;&#x4f1a;&#x628a;&#x6b64;data&#x8d4b;&#x503c;&#x7ed9;&#x7236;&#x7ec4;&#x4ef6;&#x7684;&#x53d8;&#x91cf;"/>
+<node CREATED="1619058434173" ID="Freemind_Link_1731901292" MODIFIED="1619058441158" TEXT=" &#x4f7f;&#x7528;vue&#x5f00;&#x53d1;&#x65f6;&#xff0c;&#x5728;vue&#x521d;&#x59cb;&#x5316;&#x4e4b;&#x524d;&#xff0c;&#x7531;&#x4e8e;div&#x662f;&#x4e0d;&#x5f52;vue&#x7ba1;&#x7684;&#xff0c;&#x6240;&#x4ee5;&#x6211;&#x4eec;&#x5199;&#x7684;&#x4ee3;&#x7801;&#x5728;&#x8fd8;&#x6ca1;&#x6709;&#x89e3;&#x6790;&#x7684;&#x60c5;&#x51b5;&#x4e0b;&#x4f1a;&#x5bb9;&#x6613;&#x51fa;&#x73b0;&#x82b1;&#x5c4f;&#x73b0;&#x8c61;&#xff0c;&#x770b;&#x5230;&#x7c7b;&#x4f3c;&#x4e8e;{{message}}&#x7684;&#x5b57;&#x6837;&#xff0c;&#x867d;&#x7136;&#x4e00;&#x822c;&#x60c5;&#x51b5;&#x4e0b;&#x8fd9;&#x4e2a;&#x65f6;&#x95f4;&#x5f88;&#x77ed;&#x6682;&#xff0c;&#x4f46;&#x662f;&#x6211;&#x4eec;&#x8fd8;&#x662f;&#x6709;&#x5fc5;&#x8981;&#x8ba9;&#x89e3;&#x51b3;&#x8fd9;&#x4e2a;&#x95ee;&#x9898;&#x7684;&#x3002; &#x9996;&#x5148;&#xff1a;&#x5728;css&#x91cc;&#x52a0;&#x4e0a;[v-cloak] { display: none; }&#x3002; &#x5982;&#x679c;&#x6ca1;&#x6709;&#x5f7b;&#x5e95;&#x89e3;&#x51b3;&#x95ee;&#x9898;&#xff0c;&#x5219;&#x5728;&#x6839;&#x5143;&#x7d20;&#x52a0;&#x4e0a;style=&quot;display: none;&quot; :style=&quot;{display: &apos;block&apos;}&quot;"/>
 </node>
 </node>
 </map>
