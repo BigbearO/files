@@ -27,7 +27,10 @@ war包是web工程中对web应用的一个打包，目的是节省资源，提�
 在这个项目里，有WEB-INF目录，并且有web.xml和一个index.jsp
 
 
-idea设置热部署
-1设置setting》compiler》build auto
-2Ctrl+Shift+A》输入Registry,点击进入勾选：
+2idea设置热部署
+2.1设置setting》compiler》build auto
+2.22Ctrl+Shift+A》输入Registry,点击进入勾选：
+
+3没有选项时 如何配置能运行main函数
+	--settings->maven->Runner-> Delegate IDE build/run actions to Maven 选项去掉
 
