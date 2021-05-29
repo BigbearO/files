@@ -179,5 +179,25 @@
 <node CREATED="1594259061257" HGAP="21" ID="Freemind_Link_691514086" MODIFIED="1594259274432" TEXT="on frame action &#xff0c;&#x662f;IDE&#x5931;&#x6d3b;&#x65f6;&#x8981;&#x505a;&#x7684;&#xff08;&#x5373;&#x5728;&#x540e;&#x53f0;&#xff0c;&#x4e0d;&#x662f;&#x5f53;&#x524d;&#x6253;&#x5f00;&#x9875;&#x9762;&#xff09;&#xff0c;" VSHIFT="71"/>
 </node>
 </node>
+<node CREATED="1622296047262" HGAP="7" ID="Freemind_Link_1173175865" MODIFIED="1622296059503" POSITION="right" VSHIFT="53">
+<richcontent TYPE="NODE"><html>
+  <head>
+    <style type="text/css">
+      <!--
+        p { margin-top: 0 }
+      -->
+    </style>
+    
+  </head>
+  <body>
+    <p>
+      3&#39033;&#30446;&#36816;&#34892;&#37197;&#32622;&#160;
+    </p>
+  </body>
+</html>
+</richcontent>
+<edge COLOR="#ff7400"/>
+<node CREATED="1622296061843" ID="Freemind_Link_348499292" MODIFIED="1622296063250" TEXT="&#xa0;1idea&#x914d;&#x7f6e;&#x9879;&#x76ee;&#x4ee5;&#x540e;&#x90fd;&#x80fd;&#x7528;&#xff1a;setting&#x4e0b;&#x9762;&#x7684;for new project,&#x4e4b;&#x524d;&#x7248;&#x672c;&#x662f;default setting&#xa0;&#xa0; 2&#x914d;&#x7f6e;Tomcat&#x8fd0;&#x884c;&#xff0c;&#x5728;&#x9879;&#x76ee;&#x70b9;edit configuration &#xff0c;&#x7136;&#x540e;&#x4e0b;&#x9762;&#x70b9;&#x51fb;&#x52a0;&#x53f7;&#xff0c;&#x8981;&#x52a0;artifact,&#x4e4b;&#x540e;depoyment&#x6dfb;&#x52a0;"/>
+</node>
 </node>
 </map>
